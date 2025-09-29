@@ -1,2 +1,9 @@
-# Secured-USB-app
-w
+# QRGuard
+
+QRGuard is a secure offline file transfer system that combines AES encryption with QR code–based key exchange. It was designed to address scenarios where network-based key sharing is either impractical or poses a security risk. By leveraging USB storage for file transfer and QR codes for key distribution, QRGuard ensures that sensitive data can be shared between trusted parties without relying on persistent internet connectivity.
+
+The system operates in a straightforward workflow. A sender encrypts a file using QRGuard, which generates a unique AES key for that session. Instead of transmitting this key over a potentially insecure channel, the key is presented as a QR code on the sender’s device. The receiver scans the QR code to obtain the decryption key, while the encrypted file is delivered via USB or other offline media. Once the receiver inputs the scanned key, QRGuard verifies and decrypts the file. Optional file expiration logic allows encrypted files to automatically delete after decryption or after a specified timeout, reducing the risk of long-term exposure.
+
+The project is built around a Rust command-line interface that performs encryption, decryption, and key generation with high performance and memory safety guarantees. A Python-based graphical interface complements the Rust backend by providing user-friendly interaction, such as displaying QR codes and managing file operations. This layered design keeps the cryptographic core lightweight, reliable, and portable, while still offering accessibility to users unfamiliar with command-line tools.
+
+QRGuard highlights the potential of offline-first design for secure communication. It is particularly suited for use cases such as transferring confidential information across air-gapped systems, or situations where USB-based delivery is available but network transmission is untrusted. While functional, the project remains a research and demonstration tool rather than a production-hardened security solution, and a professional security audit would be required before deployment in high-risk environments.
